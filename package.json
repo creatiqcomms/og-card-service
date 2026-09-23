@@ -1,0 +1,22 @@
+{
+  "name": "og-card-service",
+  "version": "1.0.0",
+  "private": false,
+  "license": "Apache-2.0",
+  "type": "module",
+  "description": "Dynamic Open Graph card service for Ghost (Satori + resvg)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "build:fallback": "node scripts/build-fallback.js",
+    "fetch:fonts": "bash scripts/fetch-fonts.sh"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "jsonwebtoken": "^9.0.2",
+    "satori": "^0.12.2"
+  }
+}
