@@ -2,7 +2,7 @@
 
 ![OG Card Service — social preview](docs/social-preview.png)
 
-Dynamic **1200×630** Open Graph / Twitter cards for [Ghost](https://ghost.org) sites — generated at request time so social crawlers can fetch a real image URL.
+Dynamic **1200×630** Open Graph / X / Facebook / LinkedIn cards for [Ghost](https://ghost.org) sites — generated at request time so social crawlers can fetch a real image URL.
 
 Confirmed in production against **Facebook** and **LinkedIn** Sharing Debugger / Post Inspector (Creatiq, September 2026). The same crawler contract applies to X, Slack, WhatsApp, and iMessage.
 
