@@ -1,0 +1,20 @@
+node_modules/
+cache/
+.env
+.env.*
+!.env.example
+
+# Brand assets — not licensed under Apache 2.0 (see TRADEMARK.md)
+assets/logo.svg
+assets/fallback.png
+
+# Font binaries — fetch via npm run fetch:fonts (OFL); do not vendor here
+assets/fonts/*.ttf
+assets/fonts/*.otf
+assets/fonts/*.woff
+assets/fonts/*.woff2
+!assets/fonts/README.md
+
+# Local / OS
+.DS_Store
+*.log
