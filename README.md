@@ -1,5 +1,7 @@
 # OG Card Service
 
+![OG Card Service — social preview](docs/social-preview.png)
+
 Dynamic **1200×630** Open Graph / Twitter cards for [Ghost](https://ghost.org) sites — generated at request time so social crawlers can fetch a real image URL.
 
 Confirmed in production against **Facebook** and **LinkedIn** Sharing Debugger / Post Inspector (Creatiq, September 2026). The same crawler contract applies to X, Slack, WhatsApp, and iMessage.
@@ -117,9 +119,9 @@ Brand fonts (Oswald Bold, DM Sans Regular/SemiBold/Bold) are **not** committed. 
 
 ## Social preview
 
-Repository social image (GitHub recommends **1280×640**): [`docs/social-preview.png`](docs/social-preview.png).
+The hero above is [`docs/social-preview.png`](docs/social-preview.png) (1280×640 — GitHub’s recommended social size). It was rendered with this service so the README matches production cards.
 
-Generated with this service’s own renderer so the hero matches production cards. Set it under **Settings → General → Social preview**.
+To use it when the repo is shared on GitHub: **Settings → General → Social preview** → upload that file.
 
 ## Licence
 
