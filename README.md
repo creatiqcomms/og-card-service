@@ -114,6 +114,13 @@ Brand fonts (Oswald Bold, DM Sans Regular/SemiBold/Bold) are **not** committed. 
 | Size | 1200 × 630 |
 | Cache-Control | `public, max-age=31536000, immutable` (safe because `v` busts) |
 
+
+## Social preview
+
+Repository social image (GitHub recommends **1280×640**): [`docs/social-preview.png`](docs/social-preview.png).
+
+Generated with this service’s own renderer so the hero matches production cards. Set it under **Settings → General → Social preview**.
+
 ## Licence
 
 - **Software:** [Apache License 2.0](LICENSE) — see also [NOTICE](NOTICE) and [TRADEMARK.md](TRADEMARK.md)
