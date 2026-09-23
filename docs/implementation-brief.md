@@ -14,6 +14,14 @@ Every retail page on a marketing site needs a social card. Producing one by hand
 
 The solution is a small **image endpoint**: a service that returns a 1200×630 PNG, with the Ghost theme pointing at it. Cards are then generated from page content at request time, and a redesign is a single template change rather than a re-export of every asset.
 
+### WordPress and other CMSes
+
+Facebook and LinkedIn (and peers) only require a public `og:image` URL that returns a real PNG. That half of the system is **CMS-agnostic** and has been confirmed on Facebook and LinkedIn in production.
+
+What is Ghost-specific is the **slug → fields** lookup (Ghost Admin API). WordPress needs a different resolver — typically the REST API (`/wp-json/wp/v2/pages?slug=…` or posts) or a small plugin — plus theme or SEO-plugin wiring so the generator fires only when no featured / custom social image exists (Yoast, Rank Math, and similar).
+
+Do not treat this repository as a drop-in WordPress plugin. Reuse the renderer and endpoint contract; replace the content provider.
+
 ---
 
 ## 2. Stack

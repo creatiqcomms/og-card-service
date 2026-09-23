@@ -2,11 +2,36 @@
 
 Dynamic **1200×630** Open Graph / Twitter cards for [Ghost](https://ghost.org) sites — generated at request time so social crawlers can fetch a real image URL.
 
+Confirmed in production against **Facebook** and **LinkedIn** Sharing Debugger / Post Inspector (Creatiq, September 2026). The same crawler contract applies to X, Slack, WhatsApp, and iMessage.
+
 ## Why a script on the page cannot do this
 
 Facebook, X, LinkedIn, Slack, WhatsApp, and iMessage **do not execute JavaScript**. They fetch raw HTML, read `<meta property="og:image">`, then fetch that URL as an image file. Anything rendered only in the browser is invisible to them.
 
 The fix is a small **image endpoint**: return a PNG, point the theme at it. Redesigns become a template change, not a re-export of every asset.
+
+## WordPress and other CMSes
+
+**Crawlers and the PNG renderer are CMS-agnostic.** Any site that can emit:
+
+```html
+<meta property="og:image" content="https://YOUR_OG_HOST/card?v=1&slug=…">
+```
+
+will get the same Facebook / LinkedIn behaviour once the endpoint returns `image/png` at 1200×630.
+
+**This repository’s slug lookup is Ghost-specific** (Ghost Admin API). WordPress is not a drop-in:
+
+| Layer | Ghost (shipped) | WordPress (not shipped) |
+|---|---|---|
+| Social crawlers | Works | Works the same |
+| Card renderer (Satori → PNG) | Works | Reuse as-is |
+| Slug → title / excerpt / eyebrow | Ghost Admin API | Needs a resolver — typically `GET /wp-json/wp/v2/pages?slug=` (or posts), or a small plugin |
+| Theme / SEO plugin meta | Handlebars after `{{ghost_head}}` | Theme `wp_head` hook, or Yoast / Rank Math fallback when no featured / custom social image is set |
+
+Precedence should stay the same: explicit social image → featured image → generated card. Yoast and Rank Math already emit Open Graph tags; wire the generator only as their fallback, the way Ghost’s site-wide default social image must be cleared after the endpoint is live.
+
+A portable design is a thin **content provider** interface (`ghost` today; `wordpress` later) behind the same `/card` contract — or signed query params if you refuse a CMS API dependency. Neither WordPress path is implemented in this repo yet.
 
 ## Security model — slug lookup (not free text)
 
